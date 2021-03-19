@@ -1,21 +1,21 @@
-# polkadot-launch
- Simple CLI tool to launch a local [Polkadot](https://github.com/paritytech/polkadot/) test network.
+# tetcoin-launch
+ Simple CLI tool to launch a local [Tetcoin](https://github.com/tetcoin/tetcoin) test network.
 
 ## Install
 
 ```
-yarn global add polkadot-launch
+yarn global add tetcoin-launch
 ```
 
 Or, if you use `npm`:
 ```bash
-npm i polkadot-launch -g
+npm i tetcoin-launch -g
 ```
 
 ## Use
 
 ```bash
-polkadot-launch config.json
+tetcoin-launch config.json
 ```
 
 ### Configuration File
@@ -26,7 +26,7 @@ The file has three sections: `relaychain`, `parachains`, `types`. You can see an
 
 #### `relaychain`
 
-* `bin`: The path of the [Polkadot relay chain binary](https://github.com/paritytech/polkadot/) used to setup your test network. For example `<path/to/polkadot>/target/release/polkadot`.
+* `bin`: The path of the [Tetcoin relay chain binary](https://github.com/tetcoin/tetcoin/) used to setup your test network. For example `<path/to/tetcoin>/target/release/tetcoin`.
 * `chain`: The chain you want to use to generate your spec (probably `rococo-local`).
 * `nodes`: An array of nodes that will be validators on the relay chain.
 	* `name`: Must be one of `alice`, `bob`, `charlie`, or `dave`.
@@ -48,7 +48,7 @@ These variable are fed directly into the Polkadot binary and used to spawn a nod
 
 `parachains` is an array of objects that consists of:
 
-* `bin`: The path of the [collator node binary](https://github.com/substrate-developer-hub/substrate-parachain-template) used to create blocks for your parachain. For example `<path/to/substrate-parachain-template>/target/release/polkadot-collator`.
+* `bin`: The path of the [collator node binary](https://github.com/tetcore/tetcore-parachain-template) used to create blocks for your parachain. For example `<path/to/tetcore-parachain-template>/target/release/tetcoin-collator`.
 * `id`: The id to assign to this parachain. Must be unique.
 * `wsPort`: The websocket port for this node.
 * `port`: The TCP port for this node.
@@ -99,7 +99,7 @@ ways you need to open channels in both directions.
 
 #### `types`
 
-These are the Polkadot JS types you might need to include so that Polkadot JS will be able to interface properly
+These are the Polkadot JS types you might need to include so that Tetcoin JS will be able to interface properly
 with your runtime.
 
 ```json
@@ -123,7 +123,7 @@ This tool just automates the steps needed to spin up multiple relay chain nodes 
 		# or
 		tail -f 200.log # Collator for Parachain ID 200
 		```
-* [`polkadot-js api`](https://polkadot.js.org/api/) is used to connect to these spawned nodes over their WebSocket endpoint.
+* [`polkadot-js api`](https://tetcoin.js.org/api/) is used to connect to these spawned nodes over their WebSocket endpoint.
 	* `api.rpc.system.localPeerId()` is used to retrieve the node's PeerId.
 	* `api.rpc.system.peers()` is used to retrieve connected peers to a node.
 	* `api.tx.sudo.sudo(api.tx.registrar.registerPara(id, always, wasm, header))` is used to register a parachain.
@@ -156,8 +156,8 @@ These steps can be done for you automatically by running:
 yarn start
 ```
 
-When you have finished your changes, make a [pull request](https://github.com/paritytech/polkadot-launch/pulls) to this repo.
+When you have finished your changes, make a [pull request](https://github.com/tetcoin/tetcoin-launch/pulls) to this repo.
 
 ## Get Help
 
-Open an [issue](https://github.com/paritytech/polkadot-launch/issues) if you have problems or feature requests!
+Open an [issue](https://github.com/tetcoin/tetcoin-launch/issues) if you have problems or feature requests!
